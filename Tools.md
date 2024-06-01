@@ -1,0 +1,14 @@
+- Mermaid
+- PlantUML
+- mkdocs
+- https://doctoolchain.org/docToolchain/v2.0.x/10_about/10_about-the-project.html
+- swagger
+- spring rest docs
+- asciidoctor
+- Cucumber, Gherkin, JBehave, Spock, Serenity
+- Glossary
+- Qdox
+- https://marketplace.atlassian.com/apps/1211675/git-for-confluence-markdown-plantuml-graphviz-mermaid?tab=overview&hosting=cloud
+- https://docs.structurizr.com/
+- https://github.com/xmolecules/jmolecules
+- https://github.com/jQAssistant

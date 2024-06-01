@@ -1,0 +1,26 @@
+@startuml System landscape diagram
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/dotnet.puml
+!include DEVICONS/postgresql.puml
+!include FONTAWESOME/users.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(user, "Policyholder", "wants to insure its hoverboard 🛹", $sprite="users")
+System_Ext(pricing, ".NET", "Pricing Engine")
+
+Enterprise_Boundary(coolCover, "CoolCover Company©") {
+    Container(spa, "B2C Funnel SPA", "angular", "Policy subscription tunnel", $sprite="angular")
+    Container(api, "Policy distribution API", ".NET", "Registers new policy", $sprite="dotnet")
+    ContainerDb(db, "Policies database", "PostgreSQL", "Stores events on policies and their state as read model projections", $sprite="postgresql")
+}
+
+Rel(user, spa, "subscribes", "https")
+Rel(spa, pricing, "generates a quote", "POST https/json")
+Rel(spa, api, "Issues a new policy", "POST https/json")
+Rel_R(api, db, "Writes", "jdbc")
+@enduml
